@@ -1,5 +1,7 @@
 from sys import exit
 import textwrap
+import time
+from datetime import date
 
 print " _/_/_/_/    _/_/_/_/     _/_/    _/_/_/_/_/    _/      _/"
 print " _/    _/    _/          _/  _/       _/        _/      _/"
@@ -9,9 +11,30 @@ print " _/_/_/_/    _/_/_/_/  _/       _/    _/        _/      _/ _/_/_/"
 print "                                                          "
 print "                                                          "
 
+#printingt time
+today = date.today()
+print today
+
 #Where all the items found are stored.
 backpack = []
 
+def third_room():
+	print "The only direction you could take is forward, but the room is getting more and more narrow and darker."
+	print "You could risk and venture in the darkness or you could explore more."
+	choice = raw_input()
+	
+	if "explore" in choice:
+		print "Looking around the room you found a lamp."
+		backpack.append("lamp")
+		print "The more you look you found some flint."
+		backpack.append("flint")
+	elif "venture" in choice:
+		print "The more you step in the darkness the more smaller it gets."
+		print "Your hands become your eyes and you feel the walls around you getting more and more closer."
+	elif "continue" in choice:
+		print "The more you step in the darkness the more smaller it gets."
+		print "Your hands become your eyes and you feel the walls around you getting more and more closer."
+		
 #the second larger room
 def second_room():
 	class Style:
@@ -31,10 +54,17 @@ def second_room():
 	print Style.BOLD+"What is that which has one voice and yet becomes four-footed and two-footed and three-footed?"+Style.END
 	choice = raw_input(">")
 	
-	if "human beign" in choice:
+	if "the human beign" in choice:
 		text1 = "The room is lit by the multiple torches lighing up.A symbol is drawn upon the face..."
 		print textwrap.fill(text1)
-		print "Insert symbol here"
+		print "                   "
+		print "       __________  "
+		print "       \        /  "
+		print "        \      /   "
+		print "      ---\----/--- "
+		print "          \  /     "
+		print "           \/      "
+		print "                   "
 		print "What will you do?"
 		choice = raw_input(">")
 		
@@ -42,18 +72,29 @@ def second_room():
 			text2 = "The symbol lights up and a red sphere is replaced. You take it."
 			print textwrap.fill(text2)
 			backpack.append("sphere")
+			print "The only logical step would be to search for the next exit out of here."
+			third_room()
 		elif "touch symbol" in choice:
 			text2 = "The symbol lights up and a red sphere is replaced. You take it."
 			print textwrap.fill(text2)
 			backpack.append("sphere")
+			print "The only logical step would be to search for the next exit out of here."
+			third_room()
 		else:
 			second_room()
 			
 
-	elif "human" in choice:
+	elif "the human" in choice:
 		text1 = "The room is lit by the multiple torches lighing up.A symbol is drawn upon the face..."
 		print textwrap.fill(text1)
-		print "Insert symbol here"
+		print "                   "
+		print "       __________  "
+		print "       \        /  "
+		print "        \      /   "
+		print "      ---\----/--- "
+		print "          \  /     "
+		print "           \/      "
+		print "                   "
 		print "What will you do?"
 		choice = raw_input(">")
 		
@@ -61,10 +102,14 @@ def second_room():
 			text2 = "The symbol lights up and a red sphere is replaced. You take it."
 			print textwrap.fill(text2)
 			backpack.append("sphere")
+			print "The only logical step would be to search for the next exit out of here."
+			third_room()
 		elif "touch symbol" in choice:
 			text2 = "The symbol lights up and a red sphere is replaced. You take it."
 			print textwrap.fill(text2)
 			backpack.append("sphere")
+			print "The only logical step would be to search for the next exit out of here."
+			third_room()
 		else:
 			second_room()
 			
@@ -112,7 +157,7 @@ def front_room():
 		choice = raw_input(">")
 		
 		if "continue" in choice:
-			print "Unaware you set foot on a trap. You bleed severely"
+			print "Unaware of your surroundings you set foot on a trap. You bleed severely"
 			dead("An ill fortune ahas befell upon you.\n")
 		elif "explore" in choice:
 			print "Looking around you observe that on the ground a traps."
@@ -131,7 +176,7 @@ def front_room():
 				print "The room start fillig with noxios gas, blood starts gosing through your skin."
 				dead("What a fate to be had.\n")
 	elif "attack" in choice:
-		print " attack but the machine is to powerfull and the blades cut through you like butter."
+		print "...attack but the machine is to powerfull and the blades cut through you like butter."
 		dead("What a blood bath.\n")
 	elif "stand still" in choice:
 		print "...stand still and the blades barely touch you. Your calm has rewarded you."
@@ -140,7 +185,7 @@ def front_room():
 		choice = raw_input(">")
 		
 		if "continue" in choice:
-			print "Unaware you set foot on a trap. You bleed severely"
+			print "Unaware of your surroundings you set foot on a trap. You bleed severely"
 			dead("An ill fortune ahas befell upon you.\n")
 		elif "explore" in choice:
 			print "Looking around you observe that on the ground a traps."
@@ -165,7 +210,7 @@ def front_room():
 		choice = raw_input(">")
 		
 		if "continue" in choice:
-			print "Unaware you set foot on a trap. You bleed severely"
+			print "Unaware of your surroundings you set foot on a trap. You bleed severely"
 			dead("An ill fortune has befell upon you.\n")
 		elif "explore" in choice:
 			print "Looking around you observe that on the ground a traps."
@@ -189,19 +234,19 @@ def front_room():
 		choice = raw_input(">")
 		
 		if "lift foot" in choice:
-			text= "Your instinct was right, it was a trap that could slash your foot. The mechanism was a blade swirling, head slashing contraption, you\'re lucky you\'re still alive. There was no cliff, it was all a test. In front of you see a corridor that leads somewhere. Will you stay and explore or continue."
+			text= "Your instinct was right, it was a trap that could have slashed your foot. The mechanism was a blade swirling, head slashing contraption, you\'re lucky you\'re still alive. There was no cliff, it was all a test. In front of you see a corridor that leads somewhere. Will you stay and explore or continue."
 			print textwrap.fill(text)
 			choice = raw_input(">")
 		
 			if "continue" in choice:
-				print "Unaware you set foot on a trap. You bleed severely"
+				print "Unaware of your surroundings you set foot on a trap. You bleed severely"
 				dead("An ill fortune has befell upon you.\n")
 			elif "explore" in choice:
 				print "Looking around you observe that on the ground a traps."
 				print "With coution you continue towards the corridor and your eyes stumble something\nwritten on the wall."
-				print "----------------------------------------------------------"
+				print "-"*20
 				print "I am free for the taking through all of your life,\nThough given but once at birth.\nI am less than nothing in weight,\nBut will fell the strongest of you if held."
-				print "-----------------------------------------------------------"
+				print "-"*20
 				choice = raw_input(">")
 			
 				if "breath" in choice:
@@ -240,7 +285,7 @@ def next_section_right_room():
 		else:
 			dead("Spikes burst from beneath you, killing you instantly.")
 	else:
-		dead("You wasted your life.\n")
+		next_section_right_room()
 			
 			
 #Water room
@@ -267,7 +312,7 @@ def right_room():
 		print "You laughted of this trickery and began crossing it."
 		next_section_right_room()
 	else:
-		dead("You should have listen to your destiny.\n")
+		right_room()
 		
 
 #the continuation of the left_room	
@@ -285,7 +330,7 @@ def next_section_left_room():
 	elif "move ahead" in choice:
 		second_room()
 	else:
-		dead("You should have listen to your destiny.\n")
+		next_section_left_room()
 		
 		
 #Fire room
@@ -302,8 +347,10 @@ def left_room():
 		next_section_left_room()
 	elif "move" in choice:
 		next_section_left_room()
-	else:
+	elif "stay" in choice:
 		dead("You starve and die.\n")
+	else:
+		left_room()
 		
 		
 #The first room	
@@ -313,6 +360,14 @@ def enter():
 	print "Three torches light up the room showing you three doors."
 	print "Each room has three symbols.The one on the left has fire,"
 	print "the one on the right has water and the one in front has air."
+	
+	print "                                    ________"
+	print "   /\                 /\            \      / "
+	print "  /  \            ___/__\___         \    / "
+	print " /    \             /    \            \  /  "
+	print "/      \           /      \            \/   "
+	print "--------           --------                 "
+	
 	print "Where will you go?"
 	
 	choice = raw_input(">")
@@ -324,7 +379,7 @@ def enter():
 	elif "front" in choice:
 		front_room()
 	else:
-		dead("Don't understand.\n")
+		enter()
 		
 def stay():
 	print "You decided to stay in this world."
@@ -343,7 +398,7 @@ def stay():
 	elif "yes" in choice:
 		dead("Bye.")
 	else:
-		dead("Don't understand.\n")
+		stay()
 
 def dead(why):
 	print why, "Game Over"
@@ -378,6 +433,6 @@ def start():
 	elif "yes" in choice:
 		dead("You awoke.")
 	else:
-		dead("Don't understand.\n")
+		start()
 
 start()
